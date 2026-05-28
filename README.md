@@ -66,4 +66,3 @@ uv run python build_app.py
 ระบบจะทำการ Compile และคัดลอกไฟล์อินเทอร์เฟซหน้าเว็บ (`ui/`) ทั้งหมดไปสร้างเป็นโฟลเดอร์สำหรับพกพาภายใต้ที่อยู่ `dist/AegisVault/AegisVault.exe`
 
 ---
-# Gen-password
