@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AegisVault | Secure Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AEGISVAULT</h1>
+            <p style="color: var(--text-dim); margin-top: 8px;">The World's Most Secure Password Generator</p>
+        </header>
+
+        <div class="main-display">
+            <div id="password-output">Click Generate</div>
+            <div class="strength-meter">
+                <div id="strength-bar"></div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-label">Entropy</span>
+                <span class="stat-value" id="entropy-val">0 bits</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Brute Force Time</span>
+                <span class="stat-value" id="brute-val">N/A</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Length</span>
+                <span class="stat-value" id="length-label">64</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="left-col">
+                <div class="slider-group">
+                    <label>Password Length: <span id="length-val">64</span></label>
+                    <input type="range" id="length-slider" min="32" max="256" value="64">
+                </div>
+                <div class="checkbox-grid">
+                    <label class="checkbox-item"><input type="checkbox" id="upper" checked> A-Z</label>
+                    <label class="checkbox-item"><input type="checkbox" id="lower" checked> a-z</label>
+                    <label class="checkbox-item"><input type="checkbox" id="digits" checked> 0-9</label>
+                    <label class="checkbox-item"><input type="checkbox" id="symbols" checked> Symbols</label>
+                </div>
+            </div>
+            <div class="right-col">
+                <div class="actions">
+                    <button class="btn-primary" onclick="generate()">Generate New</button>
+                    <button class="btn-secondary" onclick="copyToClipboard(this)">Copy</button>
+                    <button class="btn-secondary" onclick="generateBatch()">Batch (100)</button>
+                </div>
+                <div class="actions">
+                    <button class="btn-secondary" onclick="generateDiceware()">Diceware Mode</button>
+                    <button class="btn-secondary" onclick="checkBreach()">Check Breach</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="breach-status"></div>
+
+        <div class="history-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="font-size: 0.9rem; color: var(--text-dim);">RECENT HISTORY</h3>
+                <button class="btn-secondary" style="padding: 4px 8px; font-size: 0.7rem; flex: none;" onclick="clearHistory()">Clear</button>
+            </div>
+            <div id="history-list"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
